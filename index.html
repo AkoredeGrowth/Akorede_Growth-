@@ -3,934 +3,1817 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Akorede_Growth helps creators and businesses grow through YouTube growth, video editing, digital promotion and content strategy.">
+
+  <meta
+    name="description"
+    content="Akorede_Growth helps creators and businesses grow through YouTube growth, video editing, digital promotion and content strategy."
+  >
+
   <meta name="theme-color" content="#050505">
+
   <title>Akorede_Growth | YouTube Growth & Digital Marketing</title>
 
   <style>
+    /* =========================================================
+       AKOREDE_GROWTH
+       Complete single-file website
+       ========================================================= */
+
     :root {
       --bg: #050505;
       --surface: #0d0d0d;
       --surface-2: #121212;
+      --surface-3: #17171d;
+
       --text: #ffffff;
       --muted: #a1a1aa;
+      --muted-blue: #9aa8bd;
+
       --border: rgba(255,255,255,.10);
+      --border-light: rgba(148,163,184,.16);
+
       --accent: #8b5cf6;
-      --accent-2: #22d3ee;
+      --accent-light: #a78bfa;
+      --accent-blue: #60a5fa;
+      --accent-cyan: #22d3ee;
+
       --max: 1180px;
+
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --radius-sm: 14px;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: Inter, Arial, Helvetica, sans-serif;
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        Helvetica,
+        sans-serif;
+
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
+      overflow-x: hidden;
     }
-    a { color: inherit; text-decoration: none; }
-    img { display: block; width: 100%; }
-    .container { width: min(92%, var(--max)); margin-inline: auto; }
 
-    /* NAV */
+    body::selection {
+      background: rgba(139,92,246,.35);
+      color: #fff;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      border: 0;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    .container {
+      width: min(92%, var(--max));
+      margin-inline: auto;
+    }
+
+    /* =========================================================
+       LOGO
+       ========================================================= */
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 21px;
+      font-weight: 900;
+      letter-spacing: -.6px;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(139,92,246,.95),
+          rgba(34,211,238,.95)
+        );
+      box-shadow:
+        0 8px 30px rgba(139,92,246,.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .brand-mark::before {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: 11px;
+      background: #09090c;
+    }
+
+    .brand-mark svg {
+      width: 22px;
+      height: 22px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .brand-text span {
+      background: linear-gradient(
+        90deg,
+        var(--accent-light),
+        var(--accent-cyan)
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* =========================================================
+       NAVIGATION
+       ========================================================= */
+
     nav {
       position: fixed;
       inset: 0 0 auto;
       z-index: 1000;
+
       background: rgba(5,5,5,.82);
-      backdrop-filter: blur(16px);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+
       border-bottom: 1px solid var(--border);
     }
+
     .nav-inner {
       min-height: 76px;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       gap: 24px;
     }
-    .logo { font-size: 22px; font-weight: 900; letter-spacing: -.5px; }
-    .logo span { color: var(--accent-2); }
-    .nav-links { display: flex; gap: 28px; list-style: none; }
-    .nav-links a { color: #d4d4d8; transition: .25s; }
-    .nav-links a:hover { color: #fff; }
-    .nav-cta {
-      padding: 11px 18px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      font-weight: 800;
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
     }
 
-    /* HERO */
+    .nav-links a {
+      color: #d4d4d8;
+      font-size: 14px;
+      font-weight: 600;
+      transition:
+        color .25s ease,
+        opacity .25s ease;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 11px 18px;
+      border-radius: 999px;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--accent),
+          var(--accent-cyan)
+        );
+
+      color: #fff;
+      font-size: 14px;
+      font-weight: 800;
+
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(139,92,246,.2);
+    }
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+
     .hero {
       min-height: 100vh;
+
       display: grid;
       place-items: center;
+
       padding: 140px 0 90px;
+
       background:
-        radial-gradient(circle at 15% 25%, rgba(139,92,246,.18), transparent 32%),
-        radial-gradient(circle at 85% 70%, rgba(34,211,238,.12), transparent 30%),
+        radial-gradient(
+          circle at 15% 25%,
+          rgba(139,92,246,.18),
+          transparent 32%
+        ),
+        radial-gradient(
+          circle at 85% 70%,
+          rgba(34,211,238,.12),
+          transparent 30%
+        ),
         #050505;
     }
+
     .hero-grid {
       display: grid;
       grid-template-columns: 1.15fr .85fr;
+
       gap: 70px;
       align-items: center;
     }
+
     .eyebrow {
       display: inline-flex;
+      align-items: center;
+
       padding: 8px 14px;
+
       border: 1px solid var(--border);
       border-radius: 999px;
+
       color: #d4d4d8;
       background: rgba(255,255,255,.03);
+
       margin-bottom: 22px;
-      font-size: 14px;
+
+      font-size: 13px;
+      font-weight: 600;
     }
+
     h1 {
       font-size: clamp(48px, 7vw, 86px);
       line-height: .98;
       letter-spacing: -4px;
       margin-bottom: 26px;
     }
+
     .gradient {
-      background: linear-gradient(90deg, #a78bfa, #22d3ee);
+      background:
+        linear-gradient(
+          90deg,
+          #a78bfa,
+          #60a5fa,
+          #22d3ee
+        );
+
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
+
     .hero p {
       max-width: 680px;
+
       color: var(--muted);
+
       font-size: 19px;
+
       margin-bottom: 32px;
     }
-    .buttons { display: flex; flex-wrap: wrap; gap: 13px; }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
+
       padding: 14px 21px;
+
       border-radius: 999px;
+
       font-weight: 800;
+
       border: 1px solid var(--border);
-      transition: transform .25s, border-color .25s;
+
+      transition:
+        transform .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
     }
-    .btn:hover { transform: translateY(-2px); border-color: rgba(255,255,255,.3); }
-    .btn-primary { background: linear-gradient(90deg, var(--accent), var(--accent-2)); border: 0; }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,.3);
+    }
+
+    .btn:focus-visible,
+    .nav-cta:focus-visible,
+    a:focus-visible,
+    button:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(96,165,250,.25);
+    }
+
+    .btn-primary {
+      background:
+        linear-gradient(
+          90deg,
+          var(--accent),
+          var(--accent-cyan)
+        );
+
+      border: 0;
+    }
+
     .hero-card {
       border: 1px solid var(--border);
       border-radius: 28px;
+
       overflow: hidden;
+
       background: var(--surface);
-      box-shadow: 0 25px 80px rgba(0,0,0,.45);
-    }
-    .hero-card img { height: 460px; object-fit: cover; }
-    .hero-card-content { padding: 22px; }
-    .hero-card-content h3 { font-size: 23px; margin-bottom: 5px; }
-    .hero-card-content p { margin: 0; font-size: 15px; }
 
-    /* GENERAL */
-    section { padding: 100px 0; }
-    .section-head { margin-bottom: 45px; max-width: 720px; }
-    .section-head h2 { font-size: clamp(36px, 5vw, 58px); line-height: 1.05; margin-bottom: 15px; }
-    .section-head p { color: var(--muted); }
-
-    /* SERVICES */
-    .services {
-      background: #080808;
+      box-shadow:
+        0 25px 80px rgba(0,0,0,.45);
     }
-    .service-grid {
+
+    .hero-card img {
+      height: 460px;
+      object-fit: cover;
+    }
+
+    .hero-card-content {
+      padding: 22px;
+    }
+
+    .hero-card-content h3 {
+      font-size: 23px;
+      margin-bottom: 5px;
+    }
+
+    .hero-card-content p {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    /* =========================================================
+       GENERAL SECTIONS
+       ========================================================= */
+
+    section {
+      padding: 100px 0;
+    }
+
+    .section-head {
+      margin-bottom: 45px;
+      max-width: 720px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(36px, 5vw, 58px);
+      line-height: 1.05;
+      margin-bottom: 15px;
+      letter-spacing: -.045em;
+    }
+
+    .section-head p {
+      color: var(--muted);
+    }
+
+    /* =========================================================
+       SERVICES
+       ========================================================= */
+
+    .services-section {
+      padding: 110px 0;
+
+      background:
+        radial-gradient(
+          circle at 50% 0%,
+          rgba(139,92,246,.055),
+          transparent 35%
+        ),
+        #080808;
+    }
+
+    .services-section .section-heading {
+      max-width: 820px;
+      margin: 0 auto 54px;
+      text-align: center;
+    }
+
+    .services-section .section-heading h2 {
+      margin: 10px 0 16px;
+
+      font-size: clamp(
+        2.6rem,
+        6vw,
+        5.2rem
+      );
+
+      line-height: .98;
+      letter-spacing: -.055em;
+    }
+
+    .services-section .section-heading h2 span {
+      background:
+        linear-gradient(
+          90deg,
+          #a78bfa,
+          #60a5fa,
+          #22d3ee
+        );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .services-section .section-heading p {
+      max-width: 650px;
+
+      margin: 0 auto;
+
+      color: #9aa8bd;
+
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    /* =========================================================
+       SERVICE CATEGORY GRID
+       ========================================================= */
+
+    .service-categories {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    .service-card {
-      overflow: hidden;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      transition: transform .25s, border-color .25s;
-    }
-    .service-card:hover { transform: translateY(-7px); border-color: rgba(139,92,246,.65); }
-    .service-image { height: 205px; object-fit: cover; }
-    .service-body { padding: 24px; }
-    .service-number { color: #a78bfa; font-weight: 900; font-size: 13px; margin-bottom: 10px; }
-    .service-body h3 { font-size: 23px; margin-bottom: 9px; }
-    .service-body p { color: var(--muted); font-size: 15px; min-height: 72px; }
 
-    /* PACKAGES */
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap: 22px;
+
+      align-items: start;
+    }
+
+    .service-category {
+      min-width: 0;
+    }
+
+    /* =========================================================
+       MAIN SERVICE CARD
+       ========================================================= */
+
+    .service-main-card {
+      overflow: hidden;
+
+      min-height: 540px;
+
+      border:
+        1px solid
+        rgba(148,163,184,.16);
+
+      border-radius: 24px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(18,18,24,.98),
+          rgba(10,10,14,.98)
+        );
+
+      box-shadow:
+        0 22px 70px rgba(0,0,0,.24);
+
+      transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+    }
+
+    .service-main-card:hover {
+      transform: translateY(-7px);
+
+      border-color:
+        rgba(139,92,246,.35);
+
+      box-shadow:
+        0 30px 85px rgba(0,0,0,.4);
+    }
+
+    /* =========================================================
+       SERVICE IMAGE
+       ========================================================= */
+
+    .service-image-wrap {
+      position: relative;
+
+      height: 245px;
+
+      overflow: hidden;
+    }
+
+    .service-image-wrap img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      transition:
+        transform .6s ease;
+    }
+
+    .service-main-card:hover
+    .service-image-wrap img {
+      transform: scale(1.055);
+    }
+
+    .image-overlay {
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(3,4,9,.02) 20%,
+          rgba(3,4,9,.84) 100%
+        ),
+        linear-gradient(
+          90deg,
+          rgba(77,48,145,.14),
+          rgba(42,94,160,.08)
+        );
+    }
+
+    /* =========================================================
+       SERVICE NUMBER
+       ========================================================= */
+
+    .service-number {
+      position: absolute;
+
+      top: 18px;
+      left: 18px;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      min-width: 52px;
+      height: 34px;
+
+      padding: 0 13px;
+
+      border:
+        1px solid
+        rgba(255,255,255,.2);
+
+      border-radius: 999px;
+
+      background:
+        rgba(4,5,10,.58);
+
+      backdrop-filter: blur(12px);
+
+      color: #fff;
+
+      font-size: .78rem;
+      font-weight: 700;
+
+      letter-spacing: .12em;
+    }
+
+    /* =========================================================
+       MAIN SERVICE CONTENT
+       ========================================================= */
+
+    .service-main-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      min-height: 295px;
+
+      padding: 28px;
+    }
+
+    .service-label {
+      margin: 0 0 9px;
+
+      color: #93c5fd;
+
+      font-size: .7rem;
+      font-weight: 800;
+
+      letter-spacing: .18em;
+    }
+
+    .service-main-content h3 {
+      margin: 0;
+
+      color: #fff;
+
+      font-size:
+        clamp(
+          1.45rem,
+          2vw,
+          1.85rem
+        );
+
+      letter-spacing: -.035em;
+    }
+
+    .service-description {
+      margin: 14px 0 26px;
+
+      color: #9aa8bd;
+
+      font-size: .96rem;
+      line-height: 1.7;
+    }
+
+    /* =========================================================
+       PACKAGE TOGGLE
+       ========================================================= */
+
+    .packages-toggle {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+      min-height: 50px;
+
+      padding: 0 18px;
+
+      border:
+        1px solid
+        rgba(148,163,184,.18);
+
+      border-radius: 14px;
+
+      background:
+        rgba(255,255,255,.035);
+
+      color: #fff;
+
+      cursor: pointer;
+
+      font-size: .9rem;
+      font-weight: 700;
+
+      transition:
+        background .25s ease,
+        border-color .25s ease,
+        transform .25s ease;
+    }
+
+    .packages-toggle:hover {
+      background:
+        linear-gradient(
+          90deg,
+          rgba(124,58,237,.2),
+          rgba(37,99,235,.16)
+        );
+
+      border-color:
+        rgba(139,92,246,.48);
+
+      transform: translateY(-1px);
+    }
+
+    .packages-toggle .toggle-arrow {
+      margin-left: 8px;
+
+      transition:
+        transform .3s ease;
+    }
+
+    .service-category.is-open
+    .packages-toggle .toggle-arrow {
+      transform: translateY(-1px);
+    }
+
+    /* =========================================================
+       EXPANDING PACKAGE PANEL
+       ========================================================= */
+
+    .package-panel {
+      display: grid;
+
+      grid-template-rows: 0fr;
+
+      opacity: 0;
+
+      transition:
+        grid-template-rows .5s cubic-bezier(.2,.75,.25,1),
+        opacity .35s ease,
+        margin-top .5s ease;
+    }
+
+    .service-category.is-open
+    .package-panel {
+      grid-template-rows: 1fr;
+
+      opacity: 1;
+
+      margin-top: 18px;
+    }
+
+    .package-panel-inner {
+      min-height: 0;
+
+      overflow: hidden;
+    }
+
+    /* =========================================================
+       SMALL SERVICE CARDS
+       ========================================================= */
+
+    .package-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0,1fr));
+
+      gap: 14px;
+    }
+
+    .package-card {
+      position: relative;
+
+      min-height: 270px;
+
+      padding: 22px;
+
+      border:
+        1px solid
+        rgba(148,163,184,.13);
+
+      border-radius: 20px;
+
+      background:
+        linear-gradient(
+          180deg,
+          #101014,
+          #0b0b0f
+        );
+
+      box-shadow:
+        0 16px 45px rgba(0,0,0,.18);
+
+      transform: translateY(10px);
+
+      transition:
+        transform .4s ease,
+        border-color .35s ease,
+        background .35s ease;
+    }
+
+    .service-category.is-open
+    .package-card {
+      transform: translateY(0);
+    }
+
+    .package-card:hover {
+      border-color:
+        rgba(96,165,250,.3);
+
+      background:
+        linear-gradient(
+          180deg,
+          #131319,
+          #0d0d12
+        );
+
+      transform: translateY(-4px);
+    }
+
+    /* =========================================================
+       SERVICE ICON
+       ========================================================= */
+
+    .package-top {
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      margin-bottom: 25px;
+    }
+
+    .package-number {
+      color: #71809a;
+
+      font-size: .72rem;
+      font-weight: 800;
+
+      letter-spacing: .14em;
+    }
+
+    .package-icon {
+      display: grid;
+      place-items: center;
+
+      width: 42px;
+      height: 42px;
+
+      border:
+        1px solid
+        rgba(139,92,246,.25);
+
+      border-radius: 13px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(124,58,237,.15),
+          rgba(37,99,235,.12)
+        );
+
+      color: #b8a5ff;
+    }
+
+    .package-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .package-card h4 {
+      margin: 0 0 11px;
+
+      color: #fff;
+
+      font-size: 1.05rem;
+
+      line-height: 1.3;
+      letter-spacing: -.02em;
+    }
+
+    .package-card p {
+      margin: 0 0 23px;
+
+      color: #8e9bb0;
+
+      font-size: .86rem;
+      line-height: 1.65;
+    }
+
+    .package-action {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      color: #aebfff;
+
+      font-size: .82rem;
+      font-weight: 800;
+
+      transition:
+        gap .25s ease,
+        color .25s ease;
+    }
+
+    .package-action:hover {
+      gap: 12px;
+      color: #fff;
+    }
+
+    /* =========================================================
+       SIMPLE PACKAGES
+       ========================================================= */
+
     .packages {
       background: #050505;
     }
-    .package-grid {
+
+    .simple-package-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
       gap: 20px;
     }
-    .package {
+
+    .simple-package {
       position: relative;
+
       padding: 30px;
-      background: linear-gradient(180deg, #111, #0a0a0a);
-      border: 1px solid var(--border);
+
+      background:
+        linear-gradient(
+          180deg,
+          #111,
+          #0a0a0a
+        );
+
+      border:
+        1px solid
+        var(--border);
+
       border-radius: 24px;
     }
-    .package.featured {
-      border-color: rgba(139,92,246,.7);
-      box-shadow: 0 0 0 1px rgba(139,92,246,.12), 0 25px 80px rgba(0,0,0,.3);
+
+    .simple-package.featured {
+      border-color:
+        rgba(139,92,246,.7);
+
+      box-shadow:
+        0 0 0 1px
+        rgba(139,92,246,.12),
+        0 25px 80px rgba(0,0,0,.3);
     }
+
     .badge {
       position: absolute;
+
       top: 18px;
       right: 18px;
+
       padding: 5px 10px;
+
       border-radius: 999px;
+
       font-size: 11px;
       font-weight: 900;
-      background: rgba(139,92,246,.16);
+
+      background:
+        rgba(139,92,246,.16);
+
       color: #c4b5fd;
     }
-    .package h3 { font-size: 25px; margin-bottom: 8px; }
-    .package .price { font-size: 30px; font-weight: 900; margin: 15px 0 18px; }
-    .package .price small { font-size: 13px; color: var(--muted); font-weight: 500; }
-    .package ul { list-style: none; margin-bottom: 25px; }
-    .package li {
-      color: #d4d4d8;
-      padding: 8px 0;
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    .package li::before { content: "✓"; color: #67e8f9; margin-right: 9px; font-weight: 900; }
 
-    /* WORK */
-    .work { background: #080808; }
+    .simple-package h3 {
+      font-size: 25px;
+      margin-bottom: 8px;
+    }
+
+    .simple-package > p {
+      color: var(--muted);
+    }
+
+    .price {
+      font-size: 30px;
+      font-weight: 900;
+
+      margin: 15px 0 18px;
+    }
+
+    .price small {
+      font-size: 13px;
+
+      color: var(--muted);
+
+      font-weight: 500;
+    }
+
+    .simple-package ul {
+      list-style: none;
+      margin-bottom: 25px;
+    }
+
+    .simple-package li {
+      color: #d4d4d8;
+
+      padding: 8px 0;
+
+      border-bottom:
+        1px solid
+        rgba(255,255,255,.06);
+    }
+
+    .simple-package li::before {
+      content: "✓";
+
+      color: #67e8f9;
+
+      margin-right: 9px;
+
+      font-weight: 900;
+    }
+
+    /* =========================================================
+       WORK
+       ========================================================= */
+
+    .work {
+      background: #080808;
+    }
+
     .work-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
       gap: 20px;
     }
+
     .work-card {
       min-height: 260px;
+
       padding: 26px;
+
       border-radius: 22px;
+
       display: flex;
       align-items: flex-end;
+
       overflow: hidden;
-      border: 1px solid var(--border);
+
+      border:
+        1px solid
+        var(--border);
+
       background-size: cover;
       background-position: center;
+
       position: relative;
+
+      transition:
+        transform .3s ease,
+        border-color .3s ease;
     }
+
+    .work-card:hover {
+      transform: translateY(-5px);
+
+      border-color:
+        rgba(139,92,246,.4);
+    }
+
     .work-card::before {
       content: "";
+
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, transparent 25%, rgba(0,0,0,.92));
-    }
-    .work-content { position: relative; z-index: 1; }
-    .work-content h3 { font-size: 23px; }
-    .work-content p { color: #c4c4c8; font-size: 14px; }
 
-    /* ABOUT */
+      background:
+        linear-gradient(
+          180deg,
+          transparent 25%,
+          rgba(0,0,0,.92)
+        );
+    }
+
+    .work-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .work-content h3 {
+      font-size: 23px;
+    }
+
+    .work-content p {
+      color: #c4c4c8;
+      font-size: 14px;
+    }
+
+    /* =========================================================
+       ABOUT
+       ========================================================= */
+
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+
+      grid-template-columns:
+        1fr 1fr;
+
       gap: 60px;
+
       align-items: center;
     }
-    .about-copy p { color: var(--muted); margin-bottom: 18px; font-size: 17px; }
+
+    .about-copy p {
+      color: var(--muted);
+
+      margin-bottom: 18px;
+
+      font-size: 17px;
+    }
+
     .stats {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
       gap: 15px;
     }
+
     .stat {
       padding: 25px;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      background: var(--surface);
-    }
-    .stat strong { display: block; font-size: 28px; margin-bottom: 4px; }
-    .stat span { color: var(--muted); font-size: 14px; }
 
-    /* CONTACT */
+      border:
+        1px solid
+        var(--border);
+
+      border-radius: 20px;
+
+      background: var(--surface);
+
+      transition:
+        transform .25s ease,
+        border-color .25s ease;
+    }
+
+    .stat:hover {
+      transform: translateY(-4px);
+
+      border-color:
+        rgba(139,92,246,.35);
+    }
+
+    .stat strong {
+      display: block;
+
+      font-size: 28px;
+
+      margin-bottom: 4px;
+
+      background:
+        linear-gradient(
+          90deg,
+          #a78bfa,
+          #22d3ee
+        );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* =========================================================
+       CONTACT
+       ========================================================= */
+
     .contact {
       text-align: center;
+
       background:
-        radial-gradient(circle at 50% 20%, rgba(139,92,246,.15), transparent 35%),
+        radial-gradient(
+          circle at 50% 20%,
+          rgba(139,92,246,.15),
+          transparent 35%
+        ),
         #050505;
     }
-    .contact h2 { font-size: clamp(42px, 7vw, 78px); line-height: 1; margin-bottom: 18px; letter-spacing: -3px; }
-    .contact > .container > p { max-width: 620px; color: var(--muted); margin: 0 auto 35px; }
+
+    .contact h2 {
+      font-size:
+        clamp(
+          42px,
+          7vw,
+          78px
+        );
+
+      line-height: 1;
+
+      margin-bottom: 18px;
+
+      letter-spacing: -3px;
+    }
+
+    .contact > .container > p {
+      max-width: 620px;
+
+      color: var(--muted);
+
+      margin:
+        0 auto
+        25px;
+    }
+
+    /* Selected service */
+
+    .selected-service {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      margin-bottom: 35px;
+
+      padding: 9px 14px;
+
+      border:
+        1px solid
+        rgba(139,92,246,.28);
+
+      border-radius: 999px;
+
+      background:
+        rgba(139,92,246,.08);
+
+      color: #c4b5fd;
+
+      font-size: 13px;
+
+      opacity: 0;
+
+      transform: translateY(5px);
+
+      transition:
+        opacity .25s ease,
+        transform .25s ease;
+    }
+
+    .selected-service.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .selected-service strong {
+      color: #fff;
+    }
+
     .contact-grid {
       max-width: 900px;
+
       margin: 0 auto;
+
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
       gap: 14px;
+
       text-align: left;
     }
+
     .contact-item {
       padding: 20px;
-      border: 1px solid var(--border);
+
+      border:
+        1px solid
+        var(--border);
+
       border-radius: 18px;
+
       background: var(--surface);
+
+      transition:
+        transform .25s ease,
+        border-color .25s ease;
     }
-    .contact-item strong { display: block; margin-bottom: 4px; }
-    .contact-item span { color: var(--muted); font-size: 13px; word-break: break-word; }
 
-    /* FOOTER */
-    footer { border-top: 1px solid var(--border); padding: 28px 0; color: #777; }
-    .footer-inner { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .contact-item:hover {
+      transform: translateY(-3px);
 
-    @media (max-width: 900px) {
-      .hero-grid, .about-grid { grid-template-columns: 1fr; }
-      .service-grid, .package-grid, .work-grid { grid-template-columns: repeat(2, 1fr); }
-      .contact-grid { grid-template-columns: repeat(2, 1fr); }
-      .hero-card { max-width: 700px; }
+      border-color:
+        rgba(139,92,246,.35);
     }
-    @media (max-width: 650px) {
-      .nav-links, .nav-cta { display: none; }
-      section { padding: 75px 0; }
-      h1 { letter-spacing: -2px; }
-      .service-grid, .package-grid, .work-grid, .contact-grid { grid-template-columns: 1fr; }
-      .stats { grid-template-columns: 1fr 1fr; }
-      .hero-card img { height: 330px; }
+
+    .contact-item strong {
+      display: block;
+      margin-bottom: 4px;
     }
-  
-/* ===== Services built for growth ===== */
-.services-section {
-  padding: 110px 0;
-}
 
-.services-section .section-heading {
-  max-width: 820px;
-  margin: 0 auto 54px;
-  text-align: center;
-}
+    .contact-item span {
+      color: var(--muted);
 
-.services-section .section-heading h2 {
-  margin: 10px 0 16px;
-  font-size: clamp(2.6rem, 6vw, 5.2rem);
-  line-height: .98;
-  letter-spacing: -0.055em;
-}
+      font-size: 13px;
 
-.services-section .section-heading h2 span {
-  background: linear-gradient(90deg, #a78bfa, #60a5fa);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
+      word-break: break-word;
+    }
 
-.services-section .section-heading p {
-  max-width: 650px;
-  margin: 0 auto;
-  color: #9aa8bd;
-  font-size: 1.05rem;
-  line-height: 1.7;
-}
+    /* =========================================================
+       FOOTER
+       ========================================================= */
 
-.service-categories {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px;
-  align-items: start;
-}
+    footer {
+      border-top:
+        1px solid
+        var(--border);
 
-.service-category {
-  min-width: 0;
-}
+      padding: 28px 0;
 
-.service-main-card {
-  overflow: hidden;
-  min-height: 540px;
-  border: 1px solid rgba(148, 163, 184, .16);
-  border-radius: 24px;
-  background: linear-gradient(145deg, rgba(18,18,24,.98), rgba(10,10,14,.98));
-  box-shadow: 0 22px 70px rgba(0,0,0,.24);
-  transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
-}
+      color: #777;
+    }
 
-.service-main-card:hover {
-  transform: translateY(-7px);
-  border-color: rgba(139, 92, 246, .35);
-  box-shadow: 0 30px 85px rgba(0,0,0,.4);
-}
+    .footer-inner {
+      display: flex;
 
-.service-image-wrap {
-  position: relative;
-  height: 245px;
-  overflow: hidden;
-}
+      justify-content: space-between;
 
-.service-image-wrap img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform .6s ease;
-}
+      gap: 20px;
 
-.service-main-card:hover .service-image-wrap img {
-  transform: scale(1.055);
-}
+      flex-wrap: wrap;
+    }
 
-.image-overlay {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(180deg, rgba(3,4,9,.02) 20%, rgba(3,4,9,.82) 100%),
-    linear-gradient(90deg, rgba(77, 48, 145, .14), rgba(42, 94, 160, .08));
-}
+    /* =========================================================
+       TABLET
+       ========================================================= */
 
-.service-number {
-  position: absolute;
-  top: 18px;
-  left: 18px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 52px;
-  height: 34px;
-  padding: 0 13px;
-  border: 1px solid rgba(255,255,255,.2);
-  border-radius: 999px;
-  background: rgba(4,5,10,.58);
-  backdrop-filter: blur(12px);
-  color: #fff;
-  font-size: .78rem;
-  font-weight: 700;
-  letter-spacing: .12em;
-}
+    @media (max-width: 1000px) {
 
-.service-main-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 295px;
-  padding: 28px;
-}
+      .hero-grid,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
 
-.service-label {
-  margin: 0 0 9px;
-  color: #93c5fd;
-  font-size: .7rem;
-  font-weight: 800;
-  letter-spacing: .18em;
-}
+      .hero-card {
+        max-width: 700px;
+        width: 100%;
+        margin-inline: auto;
+      }
 
-.service-main-content h3 {
-  margin: 0;
-  color: #fff;
-  font-size: clamp(1.45rem, 2vw, 1.85rem);
-  letter-spacing: -.035em;
-}
+      .service-categories {
+        grid-template-columns:
+          repeat(2, minmax(0,1fr));
+      }
 
-.service-description {
-  margin: 14px 0 26px;
-  color: #9aa8bd;
-  font-size: .96rem;
-  line-height: 1.7;
-}
+      .service-category:last-child {
+        grid-column: 1 / -1;
 
-.packages-toggle,
-.package-action {
-  font: inherit;
-}
+        max-width:
+          calc(50% - 11px);
 
-.packages-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  min-height: 50px;
-  padding: 0 18px;
-  border: 1px solid rgba(148,163,184,.18);
-  border-radius: 14px;
-  background: rgba(255,255,255,.035);
-  color: #fff;
-  cursor: pointer;
-  font-size: .9rem;
-  font-weight: 700;
-  transition: background .25s ease, border-color .25s ease, transform .25s ease;
-}
+        width: 100%;
 
-.packages-toggle:hover,
-.packages-toggle:focus-visible {
-  background: linear-gradient(90deg, rgba(124,58,237,.2), rgba(37,99,235,.16));
-  border-color: rgba(139,92,246,.48);
-  outline: none;
-}
+        margin-inline: auto;
+      }
 
-.packages-toggle:focus-visible,
-.package-action:focus-visible {
-  box-shadow: 0 0 0 3px rgba(96,165,250,.25);
-}
+      .simple-package-grid,
+      .work-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
 
-.package-panel {
-  display: grid;
-  grid-template-rows: 0fr;
-  opacity: 0;
-  transition: grid-template-rows .5s cubic-bezier(.2,.75,.25,1), opacity .35s ease, margin-top .5s ease;
-}
+      .contact-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+    }
 
-.service-category.is-open .package-panel {
-  grid-template-rows: 1fr;
-  opacity: 1;
-  margin-top: 18px;
-}
+    /* =========================================================
+       MOBILE
+       ========================================================= */
 
-.package-panel > .package-grid {
-  min-height: 0;
-  overflow: hidden;
-}
+    @media (max-width: 680px) {
 
-.package-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0,1fr));
-  gap: 14px;
-}
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
 
-.package-card {
-  position: relative;
-  min-height: 250px;
-  padding: 22px;
-  border: 1px solid rgba(148,163,184,.13);
-  border-radius: 20px;
-  background: #0d0d11;
-  box-shadow: 0 16px 45px rgba(0,0,0,.18);
-  transform: translateY(9px);
-  transition: transform .35s ease, border-color .35s ease, background .35s ease;
-}
+      .brand {
+        font-size: 19px;
+      }
 
-.service-category.is-open .package-card {
-  transform: translateY(0);
-}
+      section {
+        padding: 75px 0;
+      }
 
-.package-card:hover {
-  border-color: rgba(96,165,250,.3);
-  background: #101016;
-  transform: translateY(-4px);
-}
+      h1 {
+        letter-spacing: -2px;
+      }
 
-.package-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 28px;
-}
+      .hero {
+        padding-top: 120px;
+      }
 
-.package-number {
-  color: #71809a;
-  font-size: .72rem;
-  font-weight: 800;
-  letter-spacing: .14em;
-}
+      .hero-grid {
+        gap: 45px;
+      }
 
-.package-icon {
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  border: 1px solid rgba(139,92,246,.25);
-  border-radius: 12px;
-  background: linear-gradient(135deg, rgba(124,58,237,.15), rgba(37,99,235,.12));
-  color: #b8a5ff;
-  font-size: 1.1rem;
-}
+      .hero p {
+        font-size: 17px;
+      }
 
-.package-card h4 {
-  margin: 0 0 11px;
-  color: #fff;
-  font-size: 1.05rem;
-  line-height: 1.3;
-  letter-spacing: -.02em;
-}
+      .hero-card img {
+        height: 330px;
+      }
 
-.package-card p {
-  margin: 0 0 23px;
-  color: #8e9bb0;
-  font-size: .86rem;
-  line-height: 1.65;
-}
+      /* SERVICES */
 
-.package-action {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: #aebfff;
-  text-decoration: none;
-  font-size: .82rem;
-  font-weight: 800;
-  transition: gap .25s ease, color .25s ease;
-}
+      .services-section {
+        padding: 80px 0;
+      }
 
-.package-action:hover {
-  gap: 12px;
-  color: #fff;
-}
+      .services-section .section-heading {
+        margin-bottom: 34px;
 
-@media (max-width: 1000px) {
-  .service-categories {
-    grid-template-columns: repeat(2, minmax(0,1fr));
-  }
+        text-align: left;
+      }
 
-  .service-category:last-child {
-    grid-column: 1 / -1;
-    max-width: calc(50% - 11px);
-    width: 100%;
-    margin-inline: auto;
-  }
-}
+      .services-section .section-heading p {
+        margin-left: 0;
+      }
 
-@media (max-width: 680px) {
-  .services-section {
-    padding: 80px 0;
-  }
+      .service-categories {
+        grid-template-columns: 1fr;
+      }
 
-  .services-section .section-heading {
-    margin-bottom: 34px;
-    text-align: left;
-  }
+      .service-category:last-child {
+        grid-column: auto;
 
-  .services-section .section-heading p {
-    margin-left: 0;
-  }
+        max-width: none;
+      }
 
-  .service-categories {
-    grid-template-columns: 1fr;
-  }
+      .service-main-card {
+        min-height: 0;
+      }
 
-  .service-category:last-child {
-    grid-column: auto;
-    max-width: none;
-  }
+      .service-image-wrap {
+        height: 210px;
+      }
 
-  .service-main-card {
-    min-height: 0;
-  }
+      .service-main-content {
+        min-height: 0;
+        padding: 23px;
+      }
 
-  .service-image-wrap {
-    height: 210px;
-  }
+      .package-grid {
+        grid-template-columns: 1fr;
+      }
 
-  .service-main-content {
-    min-height: 0;
-    padding: 23px;
-  }
+      .package-card {
+        min-height: 0;
+      }
 
-  .package-grid {
-    grid-template-columns: 1fr;
-  }
+      /* OTHER SECTIONS */
 
-  .package-card {
-    min-height: 0;
-  }
-}
+      .simple-package-grid,
+      .work-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
 
-@media (prefers-reduced-motion: reduce) {
-  .service-main-card,
-  .service-image-wrap img,
-  .package-panel,
-  .package-card,
-  .packages-toggle,
-  .package-action {
-    transition: none !important;
-  }
+      .stats {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
 
-  html {
-    scroll-behavior: auto !important;
-  }
-}
+      .footer-inner {
+        flex-direction: column;
+      }
+    }
 
-</style>
+    /* =========================================================
+       REDUCED MOTION
+       ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto !important;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <nav>
+
+  <!-- =======================================================
+       NAVIGATION
+       ======================================================= -->
+
+  <nav aria-label="Main navigation">
+
     <div class="container nav-inner">
-      <a href="#" class="logo">Akorede<span>_Growth</span></a>
+
+      <a href="#top" class="brand" aria-label="Akorede Growth home">
+
+        <span class="brand-mark" aria-hidden="true">
+
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6 17L10.2 7H13.4L18 17H15.1L14.1 14.6H9.7L8.8 17H6Z"
+              fill="url(#logoGradient)"
+            />
+
+            <path
+              d="M10.6 12.4H13.2L11.9 9.2L10.6 12.4Z"
+              fill="#050505"
+            />
+
+            <defs>
+              <linearGradient
+                id="logoGradient"
+                x1="6"
+                y1="7"
+                x2="18"
+                y2="17"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="#A78BFA"/>
+                <stop offset="1" stop-color="#22D3EE"/>
+              </linearGradient>
+            </defs>
+          </svg>
+
+        </span>
+
+        <span class="brand-text">
+          Akorede<span>_Growth</span>
+        </span>
+
+      </a>
+
       <ul class="nav-links">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#packages">Packages</a></li>
-        <li><a href="#services">Our Work</a></li>
-        <li><a href="#about">About</a></li>
+
+        <li>
+          <a href="#services">Services</a>
+        </li>
+
+        <li>
+          <a href="#packages">Packages</a>
+        </li>
+
+        <li>
+          <a href="#work">Our Work</a>
+        </li>
+
+        <li>
+          <a href="#about">About</a>
+        </li>
+
       </ul>
-      <a class="nav-cta" href="#contact">Work With Me</a>
+
+      <a
+        class="nav-cta"
+        href="#contact"
+      >
+        Work With Me
+      </a>
+
     </div>
+
   </nav>
 
-  <main>
+
+  <main id="top">
+
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
+
     <section class="hero">
+
       <div class="container hero-grid">
+
         <div>
-          <div class="eyebrow">YouTube Growth • Content • Digital Marketing</div>
-          <h1>Build your brand.<br><span class="gradient">Grow your audience.</span></h1>
-          <p>
-            Akorede_Growth helps creators, streamers and businesses improve their
-            online presence through YouTube growth, professional video editing,
-            content strategy and digital promotion.
-          </p>
-          <div class="buttons">
-            <a class="btn btn-primary" href="#packages">View Packages</a>
-            <a class="btn" href="https://wa.me/2348055020286" target="_blank" rel="noopener">WhatsApp Me</a>
+
+          <div class="eyebrow">
+            YouTube Growth • Content • Digital Marketing
           </div>
+
+          <h1>
+            Build your brand.<br>
+            <span class="gradient">
+              Grow your audience.
+            </span>
+          </h1>
+
+          <p>
+            Akorede_Growth helps creators, streamers and businesses
+            improve their online presence through YouTube growth,
+            professional video editing, content strategy and digital
+            promotion.
+          </p>
+
+          <div class="buttons">
+
+            <a
+              class="btn btn-primary"
+              href="#services"
+            >
+              Explore Services
+            </a>
+
+            <a
+              class="btn"
+              href="https://wa.me/2348055020286"
+              target="_blank"
+              rel="noopener"
+            >
+              WhatsApp Me
+            </a>
+
+          </div>
+
         </div>
+
 
         <div class="hero-card">
-          <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=85" alt="Creator working on digital content">
+
+          <img
+            src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=85"
+            alt="Creator working on digital content"
+            loading="eager"
+          >
+
           <div class="hero-card-content">
-            <h3>Akorede_Growth</h3>
-            <p>Helping creators turn content into a stronger digital presence.</p>
+
+            <h3>
+              Akorede_Growth
+            </h3>
+
+            <p>
+              Helping creators turn content into a stronger
+              digital presence.
+            </p>
+
           </div>
+
         </div>
+
       </div>
+
     </section>
 
-    
-<section id="services" class="services-section" aria-labelledby="services-title">
-  <div class="section-heading">
-    <span class="eyebrow">What I do</span>
-    <h2 id="services-title">Services built <span>for growth.</span></h2>
-    <p>Choose the service that matches your current content and audience-growth goals.</p>
-  </div>
 
-  <div id="serviceCategories" class="service-categories"></div>
-</section>
+    <!-- =====================================================
+         SERVICES BUILT FOR GROWTH
+         ===================================================== -->
 
-<script>
-  const serviceData = [
-    {
-      number: "01",
-      title: "YouTube Growth",
-      description: "Channel strategy, optimization, content planning and growth-focused support.",
-      image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=85",
-      alt: "YouTube growth and content analytics",
-      services: [
-        {
-          number: "01",
-          name: "YouTube Channel Management",
-          description: "Professional channel management covering content organization, uploads, optimization and ongoing channel improvement.",
-          icon: "▣"
-        },
-        {
-          number: "02",
-          name: "YouTube SEO & Optimization",
-          description: "Optimize titles, descriptions, keywords and video structure to improve discoverability and help your content reach the right audience.",
-          icon: "⌕"
-        },
-        {
-          number: "03",
-          name: "YouTube Automation",
-          description: "Build an efficient faceless YouTube workflow covering content research, scripting, voiceovers, editing, thumbnails and publishing.",
-          icon: "↗"
-        },
-        {
-          number: "04",
-          name: "YouTube Channel Branding",
-          description: "Create a professional and consistent channel identity with banners, thumbnails, profile graphics and visual branding.",
-          icon: "✦"
-        }
-      ]
-    },
-    {
-      number: "02",
-      title: "Video Editing",
-      description: "Professional editing for YouTube videos, Shorts, Reels and social content.",
-      image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=85",
-      alt: "Professional video editing timeline",
-      services: [
-        {
-          number: "01",
-          name: "YouTube Video Editing",
-          description: "Professional video editing with clean cuts, engaging pacing, B-roll, transitions, captions, sound effects and music.",
-          icon: "▶"
-        },
-        {
-          number: "02",
-          name: "Faceless YouTube Video Editing",
-          description: "Turn scripts and voiceovers into engaging faceless videos using stock footage, visual storytelling, captions, animations and sound design.",
-          icon: "◉"
-        },
-        {
-          number: "03",
-          name: "YouTube Shorts & Reels",
-          description: "Create engaging short-form videos for YouTube Shorts, Instagram Reels and TikTok with fast pacing, captions, effects and strong visual hooks.",
-          icon: "▥"
-        },
-        {
-          number: "04",
-          name: "Documentary & Cinematic Editing",
-          description: "Story-focused editing for documentaries and cinematic content using B-roll, sound design, transitions, color correction and professional pacing.",
-          icon: "◌"
-        }
-      ]
-    },
-    {
-      number: "03",
-      title: "Digital Marketing",
-      description: "Audience-focused promotion and content strategies for creators and businesses.",
-      image: "https://images.unsplash.com/photo-1557838923-2985c318be48?auto=format&fit=crop&w=1200&q=85",
-      alt: "Digital marketing strategy and analytics",
-      services: [
-        {
-          number: "01",
-          name: "Social Media Marketing",
-          description: "Develop and promote content across social platforms to increase brand awareness, engagement and audience growth.",
-          icon: "◎"
-        },
-        {
-          number: "02",
-          name: "Content Marketing",
-          description: "Create valuable and engaging content designed to attract your target audience and build a stronger online presence.",
-          icon: "▤"
-        },
-        {
-          number: "03",
-          name: "Social Media Promotion",
-          description: "Promote your content and brand to relevant audiences using effective social media strategies focused on visibility and engagement.",
-          icon: "↗"
-        },
-        {
-          number: "04",
-          name: "Digital Marketing Strategy",
-          description: "Develop a practical marketing strategy based on your goals, target audience, platforms, content and growth opportunities.",
-          icon: "⌁"
-        }
-      ]
-    }
-  ];
+    <section
+      id="services"
+      class="services-section"
+      aria-labelledby="services-title"
+    >
 
-  const serviceCategories = document.getElementById("serviceCategories");
-  let openCategory = null;
+      <div class="container">
 
-  function renderServices() {
-    serviceCategories.innerHTML = serviceData.map((category, index) => `
-      <article class="service-category" data-index="${index}">
-        <div class="service-main-card">
-          <div class="service-image-wrap">
-            <img src="${category.image}" alt="${category.alt}" loading="${index === 0 ? "eager" : "lazy"}">
-            <div class="image-overlay"></div>
-            <span class="service-number">${category.number}</span>
-          </div>
+        <div class="section-heading">
 
-          <div class="service-main-content">
-            <div>
-              <p class="service-label">SERVICE ${category.number}</p>
-              <h3>${category.title}</h3>
-              <p class="service-description">${category.description}</p>
+          <span class="eyebrow">
+            What I do
+          </span>
+
+          <h2 id="services-title">
+            Services built
+            <span>for growth.</span>
+          </h2>
+
+          <p>
+            Choose the service that matches your current
+            content and audience-growth goals.
+          </p>
+
+        </div>
+
+
+        <!-- JavaScript creates the service cards here -->
+
+        <div
+          id="serviceCategories"
+          class="service-categories"
+        ></div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SIMPLE PACKAGES
+         ===================================================== -->
+
+    <section
+      id="packages"
+      class="packages"
+    >
+
+      <div class="container">
+
+        <div class="section-head">
+
+          <h2>
+            Simple
+            <span class="gradient">
+              packages.
+            </span>
+          </h2>
+
+          <p>
+            Starting packages are shown below. Final pricing
+            can be adjusted after reviewing your project.
+          </p>
+
+        </div>
+
+
+        <div class="simple-package-grid">
+
+          <article class="simple-package">
+
+            <h3>
+              Starter
+            </h3>
+
+            <p>
+              For creators who need a focused growth setup.
+            </p>
+
+            <div class="price">
+              $50
+              <small>/ project</small>
             </div>
 
-            <button
-              class="packages-toggle"
-              type="button"
-              aria-expanded="false"
-              aria-controls="packages-${index}"
-              data-index="${index}"
-            >
-              <span>See packages →</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="package-panel" id="packages-${index}" aria-hidden="true">
-          <div class="package-grid">
-            ${category.services.map(service => `
-              <div class="package-card">
-                <div class="package-top">
-                  <span class="package-number">${service.number}</span>
-                  <span class="package-icon" aria-hidden="true">${service.icon}</span>
-                </div>
-                <h4>${service.name}</h4>
-                <p>${service.description}</p>
-                <a class="package-action" href="#contact" data-service="${service.name}">
-                  <span>Get Started</span><span aria-hidden="true">→</span>
-                </a>
-              </div>
-            `).join("")}
-          </div>
-        </div>
-      </article>
-    `).join("");
-
-    document.querySelectorAll(".packages-toggle").forEach(button => {
-      button.addEventListener("click", () => toggleCategory(Number(button.dataset.index)));
-    });
-
-    document.querySelectorAll(".package-action").forEach(link => {
-      link.addEventListener("click", () => {
-        const contact = document.querySelector("#contact");
-        const serviceName = link.dataset.service;
-        if (contact && serviceName) {
-          const subject = document.querySelector("#contactSubject");
-          if (subject) subject.value = `Inquiry: ${serviceName}`;
-        }
-      });
-    });
-  }
-
-  function toggleCategory(index) {
-    const categories = document.querySelectorAll(".service-category");
-
-    if (openCategory === index) {
-      categories[index].classList.remove("is-open");
-      categories[index].querySelector(".packages-toggle").setAttribute("aria-expanded", "false");
-      categories[index].querySelector(".packages-toggle span").textContent = "See packages →";
-      categories[index].querySelector(".package-panel").setAttribute("aria-hidden", "true");
-      openCategory = null;
-      return;
-    }
-
-    categories.forEach((category, i) => {
-      const button = category.querySelector(".packages-toggle");
-      const panel = category.querySelector(".package-panel");
-      const isOpen = i === index;
-
-      category.classList.toggle("is-open", isOpen);
-      button.setAttribute("aria-expanded", String(isOpen));
-      button.querySelector("span").textContent = isOpen ? "Hide packages ↑" : "See packages →";
-      panel.setAttribute("aria-hidden", String(!isOpen));
-    });
-
-    openCategory = index;
-
-    requestAnimationFrame(() => {
-      const active = categories[index];
-      if (active) {
-        active.scrollIntoView({ behavior: "smooth", block: "nearest" });
-      }
-    });
-  }
-
-  renderServices();
-</script>
-
-<section id="packages" class="packages">
-      <div class="container">
-        <div class="section-head">
-          <h2>Simple <span class="gradient">packages.</span></h2>
-          <p>Starting packages are shown below. Final pricing can be adjusted after reviewing your project.</p>
-        </div>
-
-        <div class="package-grid">
-          <article class="package">
-            <h3>Starter</h3>
-            <p>For creators who need a focused growth setup.</p>
-            <div class="price">$50 <small>/ project</small></div>
             <ul>
               <li>Channel/content review</li>
               <li>Basic growth strategy</li>
               <li>Content recommendations</li>
               <li>Basic optimization guidance</li>
             </ul>
-            <a class="btn" href="https://wa.me/2348055020286" target="_blank" rel="noopener">Get Started</a>
+
+            <a
+              class="btn"
+              href="#contact"
+              data-service="Starter Package"
+            >
+              Get Started
+            </a>
+
           </article>
 
-          <article class="package featured">
-            <div class="badge">POPULAR</div>
-            <h3>Growth</h3>
-            <p>For creators ready for consistent support.</p>
-            <div class="price">$100 <small>/ project</small></div>
+
+          <article class="simple-package featured">
+
+            <div class="badge">
+              POPULAR
+            </div>
+
+            <h3>
+              Growth
+            </h3>
+
+            <p>
+              For creators ready for consistent support.
+            </p>
+
+            <div class="price">
+              $100
+              <small>/ project</small>
+            </div>
+
             <ul>
               <li>Channel strategy</li>
               <li>Content optimization</li>
@@ -938,13 +1821,33 @@
               <li>Video/content support</li>
               <li>Progress guidance</li>
             </ul>
-            <a class="btn btn-primary" href="https://wa.me/2348055020286" target="_blank" rel="noopener">Choose Growth</a>
+
+            <a
+              class="btn btn-primary"
+              href="#contact"
+              data-service="Growth Package"
+            >
+              Choose Growth
+            </a>
+
           </article>
 
-          <article class="package">
-            <h3>Pro</h3>
-            <p>For brands and creators needing broader support.</p>
-            <div class="price">$200 <small>/ project</small></div>
+
+          <article class="simple-package">
+
+            <h3>
+              Pro
+            </h3>
+
+            <p>
+              For brands and creators needing broader support.
+            </p>
+
+            <div class="price">
+              $200
+              <small>/ project</small>
+            </div>
+
             <ul>
               <li>Full growth strategy</li>
               <li>Content planning</li>
@@ -952,104 +1855,1236 @@
               <li>Digital promotion plan</li>
               <li>Priority communication</li>
             </ul>
-            <a class="btn" href="https://wa.me/2348055020286" target="_blank" rel="noopener">Let's Talk</a>
+
+            <a
+              class="btn"
+              href="#contact"
+              data-service="Pro Package"
+            >
+              Let's Talk
+            </a>
+
           </article>
+
         </div>
+
       </div>
+
     </section>
 
-    <section id="work" class="work">
+
+    <!-- =====================================================
+         WORK
+         ===================================================== -->
+
+    <section
+      id="work"
+      class="work"
+    >
+
       <div class="container">
+
         <div class="section-head">
-          <h2>What I can <span class="gradient">help build.</span></h2>
-          <p>A selection of project types that fit the Akorede_Growth service offer.</p>
+
+          <h2>
+            What I can
+            <span class="gradient">
+              help build.
+            </span>
+          </h2>
+
+          <p>
+            A selection of project types that fit the
+            Akorede_Growth service offer.
+          </p>
+
         </div>
+
 
         <div class="work-grid">
-          <article class="work-card" style="background-image:url('https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=1200&q=85')">
+
+          <article
+            class="work-card"
+            style="
+              background-image:
+              url('https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=1200&q=85');
+            "
+          >
+
             <div class="work-content">
-              <h3>YouTube Channels</h3>
-              <p>Strategy, optimization and content growth.</p>
+
+              <h3>
+                YouTube Channels
+              </h3>
+
+              <p>
+                Strategy, optimization and content growth.
+              </p>
+
             </div>
+
           </article>
 
-          <article class="work-card" style="background-image:url('https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=85')">
+
+          <article
+            class="work-card"
+            style="
+              background-image:
+              url('https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=85');
+            "
+          >
+
             <div class="work-content">
-              <h3>Video Content</h3>
-              <p>Long-form and short-form editing.</p>
+
+              <h3>
+                Video Content
+              </h3>
+
+              <p>
+                Long-form and short-form editing.
+              </p>
+
             </div>
+
           </article>
 
-          <article class="work-card" style="background-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=85')">
+
+          <article
+            class="work-card"
+            style="
+              background-image:
+              url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=85');
+            "
+          >
+
             <div class="work-content">
-              <h3>Digital Growth</h3>
-              <p>Promotion and audience strategy.</p>
+
+              <h3>
+                Digital Growth
+              </h3>
+
+              <p>
+                Promotion and audience strategy.
+              </p>
+
             </div>
+
           </article>
+
         </div>
+
       </div>
+
     </section>
+
+
+    <!-- =====================================================
+         ABOUT
+         ===================================================== -->
 
     <section id="about">
+
       <div class="container about-grid">
+
         <div class="about-copy">
+
           <div class="section-head">
-            <h2>Meet <span class="gradient">Akorede_Growth.</span></h2>
+
+            <h2>
+              Meet
+              <span class="gradient">
+                Akorede_Growth.
+              </span>
+            </h2>
+
           </div>
+
           <p>
-            Akorede_Growth is a digital growth and creative service brand focused on
-            helping creators, streamers and businesses improve their online presence.
+            Akorede_Growth is a digital growth and creative
+            service brand focused on helping creators,
+            streamers and businesses improve their online
+            presence.
           </p>
+
           <p>
-            I combine content creation, video editing, YouTube strategy and digital
-            promotion to give each project a clear and professional direction.
+            I combine content creation, video editing,
+            YouTube strategy and digital promotion to give
+            each project a clear and professional direction.
           </p>
-          <a class="btn btn-primary" href="#contact">Contact Me</a>
+
+          <a
+            class="btn btn-primary"
+            href="#contact"
+          >
+            Contact Me
+          </a>
+
         </div>
+
 
         <div class="stats">
-          <div class="stat"><strong>01</strong><span>YouTube Growth</span></div>
-          <div class="stat"><strong>02</strong><span>Video Editing</span></div>
-          <div class="stat"><strong>03</strong><span>Digital Promotion</span></div>
-          <div class="stat"><strong>04</strong><span>Creator Support</span></div>
+
+          <div class="stat">
+            <strong>01</strong>
+            <span>YouTube Growth</span>
+          </div>
+
+          <div class="stat">
+            <strong>02</strong>
+            <span>Video Editing</span>
+          </div>
+
+          <div class="stat">
+            <strong>03</strong>
+            <span>Digital Promotion</span>
+          </div>
+
+          <div class="stat">
+            <strong>04</strong>
+            <span>Creator Support</span>
+          </div>
+
         </div>
+
       </div>
+
     </section>
 
-    <section id="contact" class="contact">
+
+    <!-- =====================================================
+         CONTACT
+         ===================================================== -->
+
+    <section
+      id="contact"
+      class="contact"
+    >
+
       <div class="container">
-        <h2>Let's <span class="gradient">grow.</span></h2>
-        <p>Ready to discuss your channel, content or digital growth project? Connect with me below.</p>
+
+        <h2>
+          Let's
+          <span class="gradient">
+            grow.
+          </span>
+        </h2>
+
+        <p>
+          Ready to discuss your channel, content or digital
+          growth project? Connect with me below.
+        </p>
+
+
+        <!-- This appears when a service is selected -->
+
+        <div
+          id="selectedService"
+          class="selected-service"
+          aria-live="polite"
+        >
+          <span>Selected service:</span>
+          <strong id="selectedServiceName"></strong>
+        </div>
+
 
         <div class="contact-grid">
-          <a class="contact-item" href="mailto:atobateleakorede4@gmail.com">
-            <strong>Email</strong><span>atobateleakorede4@gmail.com</span>
+
+          <a
+            class="contact-item"
+            href="mailto:atobateleakorede4@gmail.com"
+          >
+
+            <strong>
+              Email
+            </strong>
+
+            <span>
+              atobateleakorede4@gmail.com
+            </span>
+
           </a>
-          <a class="contact-item" href="https://wa.me/2348055020286" target="_blank" rel="noopener">
-            <strong>WhatsApp</strong><span>+234 805 502 0286</span>
+
+
+          <a
+            class="contact-item"
+            href="https://wa.me/2348055020286"
+            target="_blank"
+            rel="noopener"
+          >
+
+            <strong>
+              WhatsApp
+            </strong>
+
+            <span>
+              +234 805 502 0286
+            </span>
+
           </a>
-          <a class="contact-item" href="https://youtube.com/@dokibird?si=Bp_1auhEY1IKJfco" target="_blank" rel="noopener">
-            <strong>YouTube</strong><span>@dokibird</span>
+
+
+          <a
+            class="contact-item"
+            href="https://youtube.com/@dokibird?si=Bp_1auhEY1IKJfco"
+            target="_blank"
+            rel="noopener"
+          >
+
+            <strong>
+              YouTube
+            </strong>
+
+            <span>
+              @dokibird
+            </span>
+
           </a>
-          <a class="contact-item" href="https://www.fiverr.com/s/emRKg34" target="_blank" rel="noopener">
-            <strong>Fiverr</strong><span>View my Fiverr profile</span>
+
+
+          <a
+            class="contact-item"
+            href="https://www.fiverr.com/s/emRKg34"
+            target="_blank"
+            rel="noopener"
+          >
+
+            <strong>
+              Fiverr
+            </strong>
+
+            <span>
+              View my Fiverr profile
+            </span>
+
           </a>
+
+
           <div class="contact-item">
-            <strong>Discord</strong><span>dokibird0894</span>
+
+            <strong>
+              Discord
+            </strong>
+
+            <span>
+              dokibird0894
+            </span>
+
           </div>
-          <a class="contact-item" href="https://t.me/Shopia142" target="_blank" rel="noopener">
-            <strong>Telegram</strong><span>@Shopia142</span>
+
+
+          <a
+            class="contact-item"
+            href="https://t.me/Shopia142"
+            target="_blank"
+            rel="noopener"
+          >
+
+            <strong>
+              Telegram
+            </strong>
+
+            <span>
+              @Shopia142
+            </span>
+
           </a>
+
         </div>
+
       </div>
+
     </section>
+
   </main>
 
+
+  <!-- =======================================================
+       FOOTER
+       ======================================================= -->
+
   <footer>
+
     <div class="container footer-inner">
-      <div>© 2026 Akorede_Growth. All rights reserved.</div>
-      <div>YouTube Growth • Digital Marketing • Content</div>
+
+      <div>
+        © 2026 Akorede_Growth.
+        All rights reserved.
+      </div>
+
+      <div>
+        YouTube Growth • Digital Marketing • Content
+      </div>
+
     </div>
+
   </footer>
+
+
+  <!-- =======================================================
+       JAVASCRIPT
+       ======================================================= -->
+
+  <script>
+
+    /*
+     * ========================================================
+     * SERVICE DATA
+     * ========================================================
+     *
+     * To add or remove services later, edit this array.
+     */
+
+    const serviceData = [
+
+      /* ======================================================
+         CATEGORY 01 — YOUTUBE GROWTH
+         ====================================================== */
+
+      {
+        number: "01",
+
+        title: "YouTube Growth",
+
+        description:
+          "Channel strategy, optimization, content planning and growth-focused support.",
+
+        image:
+          "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=85",
+
+        alt:
+          "YouTube growth analytics and content strategy",
+
+        services: [
+
+          {
+            number: "01",
+
+            name:
+              "YouTube Channel Management",
+
+            description:
+              "Professional channel management covering content organization, uploads, optimization and ongoing channel improvement.",
+
+            icon: "channel"
+          },
+
+          {
+            number: "02",
+
+            name:
+              "YouTube SEO & Optimization",
+
+            description:
+              "Optimize titles, descriptions, keywords and video structure to improve discoverability and help your content reach the right audience.",
+
+            icon: "search"
+          },
+
+          {
+            number: "03",
+
+            name:
+              "YouTube Automation",
+
+            description:
+              "Build an efficient faceless YouTube workflow covering content research, scripting, voiceovers, editing, thumbnails and publishing.",
+
+            icon: "automation"
+          },
+
+          {
+            number: "04",
+
+            name:
+              "YouTube Channel Branding",
+
+            description:
+              "Create a professional and consistent channel identity with banners, thumbnails, profile graphics and visual branding.",
+
+            icon: "branding"
+          }
+
+        ]
+      },
+
+
+      /* ======================================================
+         CATEGORY 02 — VIDEO EDITING
+         ====================================================== */
+
+      {
+        number: "02",
+
+        title: "Video Editing",
+
+        description:
+          "Professional editing for YouTube videos, Shorts, Reels and social content.",
+
+        image:
+          "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=85",
+
+        alt:
+          "Professional video editing timeline and production",
+
+        services: [
+
+          {
+            number: "01",
+
+            name:
+              "YouTube Video Editing",
+
+            description:
+              "Professional video editing with clean cuts, engaging pacing, B-roll, transitions, captions, sound effects and music.",
+
+            icon: "play"
+          },
+
+          {
+            number: "02",
+
+            name:
+              "Faceless YouTube Video Editing",
+
+            description:
+              "Turn scripts and voiceovers into engaging faceless videos using stock footage, visual storytelling, captions, animations and sound design.",
+
+            icon: "layers"
+          },
+
+          {
+            number: "03",
+
+            name:
+              "YouTube Shorts & Reels",
+
+            description:
+              "Create engaging short-form videos for YouTube Shorts, Instagram Reels and TikTok with fast pacing, captions, effects and strong visual hooks.",
+
+            icon: "shorts"
+          },
+
+          {
+            number: "04",
+
+            name:
+              "Documentary & Cinematic Editing",
+
+            description:
+              "Story-focused editing for documentaries and cinematic content using B-roll, sound design, transitions, color correction and professional pacing.",
+
+            icon: "film"
+          }
+
+        ]
+      },
+
+
+      /* ======================================================
+         CATEGORY 03 — DIGITAL MARKETING
+         ====================================================== */
+
+      {
+        number: "03",
+
+        title: "Digital Marketing",
+
+        description:
+          "Audience-focused promotion and content strategies for creators and businesses.",
+
+        image:
+          "https://images.unsplash.com/photo-1557838923-2985c318be48?auto=format&fit=crop&w=1200&q=85",
+
+        alt:
+          "Digital marketing strategy and social media analytics",
+
+        services: [
+
+          {
+            number: "01",
+
+            name:
+              "Social Media Marketing",
+
+            description:
+              "Develop and promote content across social platforms to increase brand awareness, engagement and audience growth.",
+
+            icon: "social"
+          },
+
+          {
+            number: "02",
+
+            name:
+              "Content Marketing",
+
+            description:
+              "Create valuable and engaging content designed to attract your target audience and build a stronger online presence.",
+
+            icon: "content"
+          },
+
+          {
+            number: "03",
+
+            name:
+              "Social Media Promotion",
+
+            description:
+              "Promote your content and brand to relevant audiences using effective social media strategies focused on visibility and engagement.",
+
+            icon: "promotion"
+          },
+
+          {
+            number: "04",
+
+            name:
+              "Digital Marketing Strategy",
+
+            description:
+              "Develop a practical marketing strategy based on your goals, target audience, platforms, content and growth opportunities.",
+
+            icon: "strategy"
+          }
+
+        ]
+      }
+
+    ];
+
+
+    /* ========================================================
+       DOM ELEMENTS
+       ======================================================== */
+
+    const serviceCategories =
+      document.getElementById("serviceCategories");
+
+    const selectedService =
+      document.getElementById("selectedService");
+
+    const selectedServiceName =
+      document.getElementById("selectedServiceName");
+
+
+    let openCategory = null;
+
+
+    /* ========================================================
+       ICON SYSTEM
+       ======================================================== */
+
+    function getIcon(type) {
+
+      const icons = {
+
+        channel: `
+          <svg viewBox="0 0 24 24" fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true">
+            <rect x="3" y="4" width="18" height="16" rx="3"></rect>
+            <path d="M8 9h8"></path>
+            <path d="M8 13h5"></path>
+            <path d="M16 16h.01"></path>
+          </svg>
+        `,
+
+        search: `
+          <svg viewBox="0 0 24 24" fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true">
+            <circle cx="11" cy="11" r="6.5"></circle>
+            <path d="m16 16 4 4"></path>
+            <path d="M8.5 11h5"></path>
+          </svg>
+        `,
+
+        automation: `
+          <svg viewBox="0 0 24 24" fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true">
+            <path d="M5 19 19 5"></path>
+            <path d="M7 5h12v12"></path>
+            <path d="M5 12v7h7"></path>
+          </svg>
+        `,
+
+        branding: `
+          <svg viewBox="0 0 24 24" fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true">
+            <path d="m12 3 1.7 5.3H19l-4.3 3.2 1.6 5.2-4.3-3.1-4.3 3.1 1.6-5.2L5 8.3h5.3L12 3Z"></path>
+          </svg>
+        `,
+
+        play: `
+          <svg viewBox="0 0 24 24" fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true">
+            <rect x="3" y="4" width="18" height="16" rx="3"></rect>
+            <path d="m10 8 6 4-6 4V8Z"></path>
+          </svg>
+        `,
+
+        layers: `
+          <svg viewBox="0 0 24 24" fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true">
+            <path d="m12 3 8 4-8 4-8-4 8-4Z"></path>
+            <path d="m4 12 8 4 8-4"></path>
+            <path d="m4 17 8 4 8-4"></path>
+          </svg>
+        `,
+
+        shorts: `
+          <svg viewBox="0 0 24 24" fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true">
+            <rect x="6" y="3" width="12" height="18" rx="3"></rect>
+            <path d="m10 8 5 3-5 3V8Z"></path>
+            <path d="M10 18h4"></path>
+          </svg>
+        `,
+
+        film: `
+          <svg viewBox="0 0 24 24" fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+            <path d="M3 9h18"></path>
+            <path d="M7 5v4"></path>
+            <path d="M12 5v4"></path>
+            <path d="M17 5v4"></path>
+          </svg>
+        `,
+
+        social: `
+          <svg viewBox="0 0 24 24" fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true">
+            <circle cx="7" cy="12" r="2.5"></circle>
+            <circle cx="17" cy="6" r="2.5"></circle>
+            <circle cx="17" cy="18" r="2.5"></circle>
+            <path d="m9.2 10.8 5.6-3.6"></path>
+            <path d="m9.2 13.2 5.6 3.6"></path>
+          </svg>
+        `,
+
+        content: `
+          <svg viewBox="0 0 24 24" fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true">
+            <path d="M5 4h14v16H5z"></path>
+            <path d="M8 8h8"></path>
+            <path d="M8 12h8"></path>
+            <path d="M8 16h5"></path>
+          </svg>
+        `,
+
+        promotion: `
+          <svg viewBox="0 0 24 24" fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true">
+            <path d="M5 19 19 5"></path>
+            <path d="M10 5h9v9"></path>
+            <path d="M5 12v7h7"></path>
+          </svg>
+        `,
+
+        strategy: `
+          <svg viewBox="0 0 24 24" fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true">
+            <circle cx="12" cy="12" r="8"></circle>
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M12 4v5"></path>
+            <path d="M20 12h-5"></path>
+          </svg>
+        `
+
+      };
+
+      return icons[type] || icons.strategy;
+    }
+
+
+    /* ========================================================
+       RENDER SERVICES
+       ======================================================== */
+
+    function renderServices() {
+
+      serviceCategories.innerHTML =
+        serviceData.map((category, categoryIndex) => {
+
+          return `
+
+            <article
+              class="service-category"
+              data-index="${categoryIndex}"
+            >
+
+              <div class="service-main-card">
+
+                <div class="service-image-wrap">
+
+                  <img
+                    src="${category.image}"
+                    alt="${category.alt}"
+                    loading="${
+                      categoryIndex === 0
+                        ? "eager"
+                        : "lazy"
+                    }"
+                  >
+
+                  <div
+                    class="image-overlay"
+                    aria-hidden="true"
+                  ></div>
+
+                  <span class="service-number">
+                    ${category.number}
+                  </span>
+
+                </div>
+
+
+                <div class="service-main-content">
+
+                  <div>
+
+                    <p class="service-label">
+                      SERVICE ${category.number}
+                    </p>
+
+                    <h3>
+                      ${category.title}
+                    </h3>
+
+                    <p class="service-description">
+                      ${category.description}
+                    </p>
+
+                  </div>
+
+
+                  <button
+                    class="packages-toggle"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="packages-${categoryIndex}"
+                    data-index="${categoryIndex}"
+                  >
+
+                    <span class="toggle-text">
+                      See packages
+                    </span>
+
+                    <span
+                      class="toggle-arrow"
+                      aria-hidden="true"
+                    >
+                      →
+                    </span>
+
+                  </button>
+
+                </div>
+
+              </div>
+
+
+              <div
+                class="package-panel"
+                id="packages-${categoryIndex}"
+                aria-hidden="true"
+              >
+
+                <div class="package-panel-inner">
+
+                  <div class="package-grid">
+
+                    ${category.services.map(service => `
+
+                      <article class="package-card">
+
+                        <div class="package-top">
+
+                          <span class="package-number">
+                            ${service.number}
+                          </span>
+
+                          <span
+                            class="package-icon"
+                            aria-hidden="true"
+                          >
+                            ${getIcon(service.icon)}
+                          </span>
+
+                        </div>
+
+
+                        <h4>
+                          ${service.name}
+                        </h4>
+
+                        <p>
+                          ${service.description}
+                        </p>
+
+
+                        <a
+                          class="package-action"
+                          href="#contact"
+                          data-service="${service.name}"
+                        >
+
+                          <span>
+                            Get Started
+                          </span>
+
+                          <span aria-hidden="true">
+                            →
+                          </span>
+
+                        </a>
+
+                      </article>
+
+                    `).join("")}
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </article>
+
+          `;
+
+        }).join("");
+
+
+      attachServiceEvents();
+    }
+
+
+    /* ========================================================
+       SERVICE EVENTS
+       ======================================================== */
+
+    function attachServiceEvents() {
+
+      document
+        .querySelectorAll(".packages-toggle")
+        .forEach(button => {
+
+          button.addEventListener(
+            "click",
+            () => {
+
+              const index =
+                Number(button.dataset.index);
+
+              toggleCategory(index);
+
+            }
+          );
+
+        });
+
+
+      document
+        .querySelectorAll(".package-action")
+        .forEach(link => {
+
+          link.addEventListener(
+            "click",
+            () => {
+
+              const serviceName =
+                link.dataset.service;
+
+              selectService(serviceName);
+
+            }
+          );
+
+        });
+
+
+      /*
+       * Also make the main package buttons work.
+       */
+
+      document
+        .querySelectorAll(
+          ".simple-package [data-service]"
+        )
+        .forEach(link => {
+
+          link.addEventListener(
+            "click",
+            () => {
+
+              selectService(
+                link.dataset.service
+              );
+
+            }
+          );
+
+        });
+
+    }
+
+
+    /* ========================================================
+       TOGGLE CATEGORY
+       ======================================================== */
+
+    function toggleCategory(index) {
+
+      const categories =
+        document.querySelectorAll(
+          ".service-category"
+        );
+
+
+      /*
+       * Clicking the currently open category
+       * closes it.
+       */
+
+      if (openCategory === index) {
+
+        const category =
+          categories[index];
+
+        category.classList.remove(
+          "is-open"
+        );
+
+        const button =
+          category.querySelector(
+            ".packages-toggle"
+          );
+
+        const panel =
+          category.querySelector(
+            ".package-panel"
+          );
+
+        button.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+        button.querySelector(
+          ".toggle-text"
+        ).textContent =
+          "See packages";
+
+        button.querySelector(
+          ".toggle-arrow"
+        ).textContent =
+          "→";
+
+        panel.setAttribute(
+          "aria-hidden",
+          "true"
+        );
+
+        openCategory = null;
+
+        return;
+      }
+
+
+      /*
+       * Close all categories first.
+       */
+
+      categories.forEach(
+        (category, i) => {
+
+          const button =
+            category.querySelector(
+              ".packages-toggle"
+            );
+
+          const panel =
+            category.querySelector(
+              ".package-panel"
+            );
+
+          const isOpen =
+            i === index;
+
+          category.classList.toggle(
+            "is-open",
+            isOpen
+          );
+
+          button.setAttribute(
+            "aria-expanded",
+            String(isOpen)
+          );
+
+          button.querySelector(
+            ".toggle-text"
+          ).textContent =
+            isOpen
+              ? "Hide packages"
+              : "See packages";
+
+          button.querySelector(
+            ".toggle-arrow"
+          ).textContent =
+            isOpen
+              ? "↑"
+              : "→";
+
+          panel.setAttribute(
+            "aria-hidden",
+            String(!isOpen)
+          );
+
+        }
+      );
+
+
+      openCategory = index;
+
+
+      /*
+       * Smoothly bring the selected card into view.
+       */
+
+      const active =
+        categories[index];
+
+      if (active) {
+
+        setTimeout(() => {
+
+          const rect =
+            active.getBoundingClientRect();
+
+          const isBelowViewport =
+            rect.bottom >
+            window.innerHeight;
+
+          if (isBelowViewport) {
+
+            active.scrollIntoView({
+              behavior: "smooth",
+              block: "start"
+            });
+
+          }
+
+        }, 100);
+
+      }
+
+    }
+
+
+    /* ========================================================
+       SELECT SERVICE
+       ======================================================== */
+
+    function selectService(serviceName) {
+
+      if (!selectedServiceName) {
+        return;
+      }
+
+      selectedServiceName.textContent =
+        serviceName;
+
+      selectedService.classList.add(
+        "visible"
+      );
+
+    }
+
+
+    /* ========================================================
+       KEYBOARD SUPPORT
+       ======================================================== */
+
+    document.addEventListener(
+      "keydown",
+      event => {
+
+        /*
+         * Escape closes the currently open
+         * service category.
+         */
+
+        if (
+          event.key === "Escape" &&
+          openCategory !== null
+        ) {
+
+          toggleCategory(
+            openCategory
+          );
+
+        }
+
+      }
+    );
+
+
+    /* ========================================================
+       INITIALIZE
+       ======================================================== */
+
+    renderServices();
+
+  </script>
+
 </body>
 </html>
